@@ -1,0 +1,22 @@
+{
+  "name": "christmas-gift",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmirGhan/christmas-gift.git"
+  },
+  "author": "Amir Ghandeharioon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmirGhan/christmas-gift/issues"
+  },
+  "homepage": "https://github.com/AmirGhan/christmas-gift#readme",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
+}
