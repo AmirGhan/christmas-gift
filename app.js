@@ -24,9 +24,6 @@ rl.on('line', function(line) {
     console.log("Successfully added: ", person)
 
 
-  } else if (line.trim() === 'draw') {
-    game.draw();
-
   }
 
   rl.prompt();

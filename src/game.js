@@ -13,11 +13,9 @@ module.exports = class Game {
 			let member2 = new Person(spouse, name)
 			this.members.push(member2)
 		}
-		console.log(this.members)
 		return member
 	}
 
-	draw()
-
+	
 
 }
