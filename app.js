@@ -17,14 +17,14 @@ rl.prompt();
 //     });
 // });
 rl.on('line', function(line) {
-  if (line.startsWith('r')) {
+  if (line.startsWith('register')) {
 		let name = line.split(' ')[1];
 		let spouse = line.split(' ')[2];
     let member = game.addMember(name, spouse)
     console.log("Successfully added: ", member)
 
 
-  } else if (line.trim() === 'd') {
+  } else if (line.trim() === 'draw') {
     game.draw();
 
   }
