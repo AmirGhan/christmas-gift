@@ -25,7 +25,18 @@ rl.on('line', function(line) {
 
 
   } else if (line.trim() === 'draw') {
-    game.draw();
+    try {
+
+      let results = game.draw();
+      console.log("Results: ", results)
+    }
+    catch (err){
+      console.log(err)
+    }
+
+  } else if (line.trim() === 'restart') {
+    game.restart();
+    console.log("*** The app has been restarted ***")
 
   }
 
@@ -33,6 +44,6 @@ rl.on('line', function(line) {
 })
 
 rl.on('close', function() {
-    console.log('*** Thank you for using our app, Have a great day! ***');
+    console.log('*** Thank you for using our app... Merry Christmas!!! ***');
     process.exit(0);
 });
