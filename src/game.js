@@ -23,7 +23,12 @@ module.exports = class Game {
 		for (let i = 0; i < this.members.length; i++){
 			let randomNum = Math.floor(Math.random() * giftArr.length);
 			console.log("randomNum: ", randomNum)
+			console.log("giftArr length: ", giftArr.length)
 
+			if (i == this.members.length - 1 && (this.members[i].name == giftArr[randomNum].name || this.members[i].spouse == giftArr[randomNum].name)) {
+				this.reset();
+				break;
+			}
 			if (this.members[i].name == giftArr[randomNum].name || this.members[i].spouse == giftArr[randomNum].name) {
 				i--; continue;
 			}
@@ -31,45 +36,16 @@ module.exports = class Game {
 
 			let obj = {}
 			obj[this.members[i].name] = matchedPerson.name
-			console.log(obj)
+			console.log("***********", obj)
 
 		}
 
-		// restartLoop:
-		// while(true) {
-		// 	for (let i = 0; i < this.members.length; i++) {
-		// 		let randomNum = Math.floor(Math.random() * giftArr.length);
-		// 		console.log("randomNum: ", randomNum)
-		// 		if (this.members[i].name == giftArr[randomNum].name || this.members[i].spouse == giftArr[randomNum].name) {
-		// 			break restartLoop;
-		// 		}
-		// 		let matchedPerson = giftArr.splice(randomNum, 1)[0];
-    //
-		// 		let obj = {}
-		// 		obj[this.members[i].name] = matchedPerson.name
-		// 		console.log(obj)
-		// 	}
-		// 	break;
-    //
-		// }
 
 
+	}
 
-		// for (let i of this.members) {
-		// 	let randomNum = Math.floor(Math.random() * giftArr.length);
-		// 		console.log("randomNum: ", randomNum)
-    //
-		// 		if (i.name !== giftArr[randomNum].name || i.spouse == giftArr[randomNum].name) {
-		// 			//RESET
-		// 		}
-    //
-		// 		let matchedPerson = giftArr.splice(randomNum, 1)[0];
-		// 		let obj = {}
-		// 		obj[i.name] = matchedPerson.name
-		// 		console.log(obj)
-		// }
-
-
+	reset(){
+		this.draw()
 	}
 
 
