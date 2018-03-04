@@ -1,4 +1,4 @@
-const Person = require('./person');
+const Member = require('./member');
 
 module.exports = class Game {
 	constructor () {
@@ -6,16 +6,21 @@ module.exports = class Game {
 
 	}
 
-	addPerson(name, spouse) {
-		let member = new Person(name, spouse)
+	addMember(name, spouse) {
+		let member = new Member(name, spouse)
 		this.members.push(member)
 		if (spouse !== undefined) {
-			let member2 = new Person(spouse, name)
+			let member2 = new Member(spouse, name)
 			this.members.push(member2)
 		}
 		return member
 	}
 
-	
+	draw() {
+		let giftArr = this.members.slice();
+		console.log("giftArr: ", giftArr)
+
+	}
+
 
 }

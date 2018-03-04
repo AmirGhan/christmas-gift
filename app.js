@@ -20,9 +20,12 @@ rl.on('line', function(line) {
   if (line.startsWith('register')) {
 		let name = line.split(' ')[1];
 		let spouse = line.split(' ')[2];
-    let person = game.addPerson(name, spouse)
-    console.log("Successfully added: ", person)
+    let member = game.addMember(name, spouse)
+    console.log("Successfully added: ", member)
 
+
+  } else if (line.trim() === 'draw') {
+    game.draw();
 
   }
 
