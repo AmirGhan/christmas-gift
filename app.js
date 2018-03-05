@@ -67,7 +67,6 @@ rl.on('line', function(line) {
 		 	console.log("You must enter a name after 'get' command");
 		}
 
-
   } else if (line.trim() === 'results') {
     let results = game.finalResults();
     console.log("Results: ", results)
