@@ -16,7 +16,9 @@ module.exports = class Game {
 			this.members.push(member2)
 			arr.push(member2)
 		}
-		return JSON.stringify(arr, null, 1); // Pretty-printing
+		// return JSON.stringify(arr, null, 1); // Pretty-printing
+		// return JSON.stringify(arr); // Pretty-printing
+		return arr
 	}
 
 	draw() {
