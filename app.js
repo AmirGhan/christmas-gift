@@ -61,7 +61,7 @@ rl.on('line', function(line) {
         console.log(`'${name}' gives a gift to '${matched}'`)
       }
       catch(err){
-        console.log("*** There is NO member with such a name in the results list ***")
+        console.log(err)
       }
     } else {
 		 	console.log("You must enter a name after 'get' command");

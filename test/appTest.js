@@ -9,13 +9,12 @@ describe('App', function () {
       let game = new Game()
       let result = game.addMember('Jack');
       expect(result).to.be.an('array').that.deep.include({ name: 'Jack', spouse: undefined });
-
     });
+
     it('should return an array of a registered couple (2 members)', function () {
       let game = new Game()
       let result = game.addMember('Jack', 'Sarah');
       expect(result).to.be.an('array').that.deep.includes({ name: 'Jack', spouse: 'Sarah' }).and.deep.include({ name: 'Sarah', spouse: 'Jack' });
-
     });
 
   });
@@ -43,14 +42,22 @@ describe('App', function () {
     });
 
     describe('find()', function () {
-      it('should return a string which is the matched name for gift exchange', function () {
+      it('should return a string if a given name matches a person in the results list', function () {
         let game = new Game()
         game.addMember('Jack');
         game.addMember('John');
         game.draw();
         result = game.find('Jack');
         expect(result).to.be.a('string').that.includes('John')
-      })
+      });
+
+      it('should throw an error if a given name is NOT in the results list', function () {
+        let game = new Game()
+        game.addMember('Jack');
+        game.addMember('John');
+        game.draw();
+        expect(game.find.bind(game, 'Sarah')).to.throw('*** There is NO member with such a name in the results list ***');
+      });
     });
 
 });

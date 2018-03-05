@@ -84,13 +84,14 @@ module.exports = class Game {
 		if (name in this.results) {
 			return this.results[name]
 		} else {
-			throw err
+			throw "*** There is NO member with such a name in the results list ***"
 		}
 
 	}
 
 	finalResults(){
-		return JSON.stringify(this.results, null, 2) // Pretty-printing
+		// return JSON.stringify(this.results, null, 2) // Pretty-printing
+		return this.results
 	}
 
 	restart(){
