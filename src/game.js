@@ -3,6 +3,7 @@ const Member = require('./member');
 module.exports = class Game {
 	constructor () {
 		this.members = [];
+		this.results = {};
 	}
 
 	addMember(name, spouse) {
@@ -19,7 +20,6 @@ module.exports = class Game {
 	}
 
 	draw() {
-		console.log("members: ", this.members)
 		// Stops if only 1 person registered
 		if(this.members.length == 1){
 			throw("*** Due to conditions, you can NOT use this app for only 1 person ***");
@@ -37,7 +37,7 @@ module.exports = class Game {
 		}
 
 		let giftArr = this.members.slice(); // Create a copy of the members list
-		let results = {}
+
 		for (let i = 0; i < this.members.length; i++){
 			let randomNum = Math.floor(Math.random() * giftArr.length); // Generate a random number based on remaining unmatched people
 
@@ -66,10 +66,10 @@ module.exports = class Game {
 
 			let matchedPerson = giftArr.splice(randomNum, 1)[0]; // Removing the matched person from the list
 
-			results[this.members[i].name] = matchedPerson.name;
+			this.results[this.members[i].name] = matchedPerson.name;
 
 		}
-	return JSON.stringify(results, null, 2) // Pretty-printing
+
 
 
 
@@ -77,6 +77,19 @@ module.exports = class Game {
 
 	reset(){
 		this.draw();
+	}
+
+	find(name){
+		if (name in this.results) {
+			return this.results[name]
+		} else {
+			throw err
+		}
+
+	}
+
+	finalResults(){
+		return JSON.stringify(this.results, null, 2) // Pretty-printing
 	}
 
 	restart(){
