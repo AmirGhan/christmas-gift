@@ -23,5 +23,13 @@ describe('App', function () {
 
   });
 
+    describe('draw()', function () {
+      it('should throw an error if there is only 1 person for draw', function () {
+        let game = new Game()
+        game.addMember('Jack');
+        expect(game.draw.bind(game)).to.throw('*** Due to conditions, you can NOT use this app for only 1 person ***');
+      });
+
+    });
 
 });
