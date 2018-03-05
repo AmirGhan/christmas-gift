@@ -42,4 +42,15 @@ describe('App', function () {
 
     });
 
+    describe('find()', function () {
+      it('should return a string which is the matched name for gift exchange', function () {
+        let game = new Game()
+        game.addMember('Jack');
+        game.addMember('John');
+        game.draw();
+        result = game.find('Jack');
+        expect(result).to.be.a('string').that.includes('John')
+      })
+    });
+
 });
