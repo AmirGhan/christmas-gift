@@ -96,6 +96,7 @@ module.exports = class Game {
 
 	restart(){
 		this.members = [];
+		this.results = {};
 	}
 
 }

@@ -60,4 +60,15 @@ describe('App', function () {
       });
     });
 
+    describe('finalResults()', function () {
+      it('should return an object of the list of matched members', function () {
+        let game = new Game()
+        game.addMember('Jack');
+        game.addMember('John');
+        game.draw();
+        result = game.finalResults();
+        expect(result).to.be.an('object').that.deep.includes({ Jack: 'John', John: 'Jack' });
+      })
+    });
+
 });
