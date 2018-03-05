@@ -16,7 +16,6 @@ module.exports = class Game {
 			this.members.push(member2)
 			arr.push(member2)
 		}
-		// return JSON.stringify(arr, null, 1); // Pretty-printing
 		return arr
 	}
 
@@ -84,7 +83,6 @@ module.exports = class Game {
 	}
 
 	finalResults(){
-		// return JSON.stringify(this.results, null, 2) // Pretty-printing
 		return this.results
 	}
 
