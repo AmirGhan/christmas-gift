@@ -1,9 +1,7 @@
-const assert = require('chai').assert;
 const expect = require('chai').expect;
-
 const Game = require('../models/game');
 
-describe('App', function () {
+describe('Game', function () {
   describe('addMember()', function () {
     it('should return an array of a registered member', function () {
       let game = new Game()
@@ -68,6 +66,17 @@ describe('App', function () {
         game.draw();
         result = game.finalResults();
         expect(result).to.be.an('object').that.deep.includes({ Jack: 'John', John: 'Jack' });
+      })
+    });
+
+    describe('restart()', function () {
+      it('should return an object of empty members list and results list', function () {
+        let game = new Game()
+        game.addMember('Jack');
+        game.addMember('John');
+        game.draw();
+        result = game.restart();
+        expect(result).to.be.an('object').that.deep.includes({ membersList: [], resultsList: {} });
       })
     });
 

@@ -68,12 +68,7 @@ module.exports = class Game {
 			let matchedPerson = giftArr.splice(randomNum, 1)[0]; // Removing the matched person from the list
 
 			this.results[this.members[i].name] = matchedPerson.name;
-
 		}
-
-
-
-
 	}
 
 	reset(){
@@ -85,8 +80,7 @@ module.exports = class Game {
 			return this.results[name]
 		} else {
 			throw "*** There is NO member with such a name in the results list ***"
-		}
-
+		};
 	}
 
 	finalResults(){
@@ -95,8 +89,12 @@ module.exports = class Game {
 	}
 
 	restart(){
-		this.members = [];
-		this.results = {};
+		let membersList = this.members = [];
+		let resultsList = this.results = {};
+		return {
+			membersList: membersList,
+			resultsList: resultsList
+		};
 	}
 
 }
