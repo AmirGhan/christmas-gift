@@ -1,6 +1,6 @@
 
 const readline = require('readline');
-const game = new (require('./src/game'))();
+const game = new (require('./models/game'))();
 
 function init() {
   console.log(
