@@ -4,8 +4,8 @@ const Game = require('../models/game');
 describe('Game', function () {
   let game;
   beforeEach(function () {
-    game = new Game()
-  })
+    game = new Game();
+  });
 
   describe('addMember()', function () {
     it('should return an array of a registered member', function () {
@@ -45,7 +45,7 @@ describe('Game', function () {
         game.addMember('John');
         game.draw();
         result = game.find('Jack');
-        expect(result).to.be.a('string').that.includes('John')
+        expect(result).to.be.a('string').that.includes('John');
       });
 
       it('should throw an error if a given name is NOT in the results list', function () {
@@ -63,7 +63,7 @@ describe('Game', function () {
         game.draw();
         result = game.finalResults();
         expect(result).to.be.an('object').that.deep.includes({ Jack: 'John', John: 'Jack' });
-      })
+      });
     });
 
     describe('restart()', function () {
@@ -73,7 +73,7 @@ describe('Game', function () {
         game.draw();
         result = game.restart();
         expect(result).to.be.an('object').that.deep.includes({ membersList: [], resultsList: {} });
-      })
+      });
     });
 
 });

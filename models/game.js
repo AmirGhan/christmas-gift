@@ -7,33 +7,30 @@ module.exports = class Game {
 	}
 
 	addMember(name, spouse) {
-		let arr = [];
-		let member = new Member(name, spouse)
-		this.members.push(member)
-		arr.push(member)
+		let registeredMember = [];
+		let member = new Member(name, spouse);
+		this.members.push(member);
+		registeredMember.push(member);
 		if (spouse !== undefined) {
-			let member2 = new Member(spouse, name)
-			this.members.push(member2)
-			arr.push(member2)
+			let member2 = new Member(spouse, name);
+			this.members.push(member2);
+			registeredMember.push(member2);
 		}
-		return arr
+		return registeredMember;
 	}
 
 	draw() {
 		// Stops if only 1 person registered
 		if(this.members.length == 1){
 			throw("*** Due to conditions, you can NOT use this app for only 1 person ***");
-			return
 		}
 		// Stops if only 1 couple registered
 		if(this.members.length == 2 && this.members[0].name == this.members[1].spouse){
 			throw("*** Due to conditions, you can NOT use this app for only 1 couple ***");
-			return
 		}
 		// Stops if only 1 couple and 1 person registered
-		if(this.members.length == 3 && (this.members[0].name == this.members[1].spouse || this.members[1].name == this.members[2].spouse)){
+		if(this.members.length == 3 && (this.members[0].name == this.members[1].spouse || this.members[1].name == this.members[2].spouse || this.members[0].name == this.members[2].spouse)){
 			throw("*** Due to conditions, you can NOT use this app for only 1 couple and 1 single person ***");
-			return
 		}
 
 		let giftArr = this.members.slice(); // Create a copy of the members list
@@ -51,19 +48,19 @@ module.exports = class Game {
 					this.reset();
 					break;
 				}
-			};
+			}
 
 			// For the last person, check if the remaining person is himself or his spouse, if yes: reset
 			if (i == this.members.length - 1 && (this.members[i].name == giftArr[randomNum].name || this.members[i].spouse == giftArr[randomNum].name)) {
 				this.reset();
 				break;
-			};
+			}
 
 			// When a person matches with himself or his spouse, go back and generate another random number until passes this condition
 			if (this.members[i].name == giftArr[randomNum].name || this.members[i].spouse == giftArr[randomNum].name) {
-				i--; continue;
-			};
-
+				i--;
+				continue;
+			}
 			let matchedPerson = giftArr.splice(randomNum, 1)[0]; // Removing the matched person from the list
 
 			this.results[this.members[i].name] = matchedPerson.name;
@@ -76,14 +73,14 @@ module.exports = class Game {
 
 	find(name){
 		if (name in this.results) {
-			return this.results[name]
+			return this.results[name];
 		} else {
-			throw "*** There is NO member with such a name in the results list ***"
-		};
+			throw "*** There is NO member with such a name in the results list ***";
+		}
 	}
 
 	finalResults(){
-		return this.results
+		return this.results;
 	}
 
 	restart(){
@@ -95,4 +92,4 @@ module.exports = class Game {
 		};
 	}
 
-}
+};

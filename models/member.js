@@ -3,4 +3,4 @@ module.exports = class Member {
     this.name = name;
     this.spouse = spouse;
   }
-}
+};

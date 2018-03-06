@@ -7,8 +7,8 @@ function init() {
     "**************************************** \n" +
     "*** WELCOME TO THE GIFT EXCHANGE APP *** \n" +
     "****************************************"
-  )
-};
+  );
+}
 init();
 
 function printHelp() {
@@ -21,8 +21,8 @@ function printHelp() {
     " 'results' to see the results of everyone. \n" +
     " 'restart' to reset and start a new game. \n" +
     " 'ctrl + C' to exit the app"
-  )
-};
+  );
+}
 
 printHelp();
 
@@ -37,8 +37,8 @@ rl.on('line', function(line) {
 		let name = line.split(' ')[1];
 		let spouse = line.split(' ')[2];
     if (name) {
-      let member = game.addMember(name, spouse)
-      console.log("Successfully added: ", member)
+      let member = game.addMember(name, spouse);
+      console.log("Successfully added: ", member);
 
     } else {
 		 	console.log("You must enter a name after 'register' command");
@@ -47,21 +47,21 @@ rl.on('line', function(line) {
   } else if (line.trim() === 'draw') {
     try {
       game.draw();
-      console.log("*** Draw has been done! ***")
+      console.log("*** Draw has been done! ***");
     }
     catch (err){
-      console.log(err)
+      console.log(err);
     }
 
   } else if (line.startsWith('get')) {
     let name = line.slice('get '.length);
     if (name.length > 0) {
       try {
-        let matched = game.find(name)
-        console.log(`'${name}' gives a gift to '${matched}'`)
+        let matched = game.find(name);
+        console.log(`'${name}' gives a gift to '${matched}'`);
       }
       catch(err){
-        console.log(err)
+        console.log(err);
       }
     } else {
 		 	console.log("You must enter a name after 'get' command");
@@ -69,11 +69,11 @@ rl.on('line', function(line) {
 
   } else if (line.trim() === 'results') {
     let results = game.finalResults();
-    console.log("Results: ", results)
+    console.log("Results: ", results);
 
   } else if (line.trim() === 'restart') {
     game.restart();
-    console.log("*** The app has been restarted! ***")
+    console.log("*** The app has been restarted! ***");
 
   } else if (line.trim() === 'help') {
     printHelp();
@@ -82,11 +82,11 @@ rl.on('line', function(line) {
     console.log(
       "***** Unknown command ***** \n" +
       "Type 'help' for the list of valid commands"
-    )
+    );
   }
 
   rl.prompt();
-})
+});
 
 rl.on('close', function() {
     console.log('*** Thank you for using our app... Merry Christmas!!! ***');
