@@ -14,13 +14,13 @@ init();
 function printHelp() {
   console.log(
     "COMMANDS: \n" +
-    " 'help' for the list of commands. \n" +
-    " 'register [YOUR NAME] [SPOUSE NAME]' to register. \n ***** Names must be unique! ***** \n *** If you have a spouse, you have to register one time only and add his/her name with yourself, otherwise leave it blank. ***  \n" +
-    " 'draw' to match registered members \n" +
-    " 'get [YOUR NAME]' to see who you should give a gift. \n" +
-    " 'results' to see the results of everyone. \n" +
-    " 'restart' to reset and start a new game. \n" +
-    " 'ctrl + C' to exit the app"
+    " - 'help' for the list of commands at any point. \n" +
+    " - 'register YOUR_NAME SPOUSE_NAME' to register. \n ***** Names must be unique! ***** \n *** If you have a spouse, you have to register ONLY ONE TIME and add his/her name with yourself, otherwise leave it blank. ***  \n" +
+    " - 'draw' to match registered members \n" +
+    " - 'get YOUR_NAME' to see who you should give a gift. \n" +
+    " - 'results' to see the results of everyone. \n" +
+    " - 'restart' to reset and start a new game. \n" +
+    " - 'ctrl + C' to exit the app"
   );
 }
 
