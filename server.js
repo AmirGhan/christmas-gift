@@ -12,6 +12,11 @@ app.get("/", function(req, res) {
   res.render("index");
 });
 
+app.post("/register", function(req, res) {
+  let member = game.addMember(req.body.name, req.body.spouse)
+  res.send(member)
+})
+
 
 
 

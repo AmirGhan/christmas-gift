@@ -1,0 +1,9 @@
+.background {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.container-fluid {
+  background-color: #eee;
+  min-height: 55em;
+}

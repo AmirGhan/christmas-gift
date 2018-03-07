@@ -11,7 +11,7 @@ module.exports = class Game {
 		let member = new Member(name, spouse);
 		this.members.push(member);
 		registeredMember.push(member);
-		if (spouse !== undefined) {
+		if (spouse !== undefined && spouse != '') {
 			let member2 = new Member(spouse, name);
 			this.members.push(member2);
 			registeredMember.push(member2);

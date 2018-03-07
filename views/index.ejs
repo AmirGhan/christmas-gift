@@ -14,9 +14,112 @@
   </head>
 
   <body>
+    <div class="background">
 
-          <h1>Welcome to the Gift Exchange App</h1>
-        
+      <div class="container-fluid">
+        <div class="row">
+          <h1 style="text-align: center;">Welcome to the Gift Exchange App</h1>
+        </div>
+
+        <hr>
+
+
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-6">
+            <form method="POST" action="/register" id="register">
+              <div>
+                <label>Enter your name:</label>
+                <input type="text" name="name" required>
+                <label>Enter your spouse name:</label>
+                <input type="text" name="spouse" placeholder="If applicable">
+                <input class="btn btn-default" type="submit" value="Register">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form method="POST" action="/draw" id="draw">
+              <input class="btn btn-info btn-block" type="submit" value="Draw">
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form method="POST" action="/winners" id="winners">
+              <input class="btn btn-success btn-block" type="submit" value="Winners">
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form method="POST" action="/restart">
+              <input class="btn btn-warning btn-block" type="submit" value="Restart">
+            </form>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Members:</h3>
+            <section id="members"></section>
+          </div>
+          <div class="col-md-3">
+            <h3>Winnable Pot:</h3>
+            <section id="winnablePot"></section>
+          </div>
+          <div class="col-md-5">
+            <h3>Winners:</h3>
+            <section id="winnersArticle"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer>
+       <div class="container">
+         <div class="row text-center">
+            <ul class="list-inline">
+               <li>
+                    <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+               </li>
+               <li>
+                 <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+               </li>
+               <li>
+                    <a href="#"><i class="fa fa-share-alt fa-2x"></i></a>
+               </li>
+             </ul>
+        </div>
+
+        <div class="row text-center">
+          <ul class="menu list-inline">
+             <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                 <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+             </li>
+         </ul>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright">
+     <div class="container">
+
+         <div class="row text-center">
+         	<p>© 2018 Amir Ghandeharioon</p>
+         </div>
+
+ 	   </div>
+    </div>
+
+
+
 
     <!-- jQuery -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
