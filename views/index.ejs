@@ -44,6 +44,13 @@
               <input class="btn btn-info btn-block" type="submit" value="Draw">
             </form>
           </div>
+          <form method="POST" action="/find" id="find">
+            <div>
+              <label>Enter your name to see who you're matched with:</label>
+              <input type="text" name="name" required>
+              <input class="btn btn-default" type="submit" value="Search">
+            </div>
+          </form>
           <div class="col-md-2">
             <form method="POST" action="/winners" id="winners">
               <input class="btn btn-success btn-block" type="submit" value="Winners">
@@ -57,19 +64,22 @@
         </div>
 
         <hr>
+        <div id="message">
 
+        </div>
+        <hr>
         <div class="row">
           <div class="col-md-4">
             <h3>Members:</h3>
             <section id="members"></section>
           </div>
           <div class="col-md-3">
-            <h3>Winnable Pot:</h3>
-            <section id="winnablePot"></section>
+            <h3>Gift Exchange:</h3>
+            <section id="giftExchange"></section>
           </div>
           <div class="col-md-5">
-            <h3>Winners:</h3>
-            <section id="winnersArticle"></section>
+            <h3>Results:</h3>
+            <section id="results"></section>
           </div>
         </div>
       </div>

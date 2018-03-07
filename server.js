@@ -8,6 +8,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+let errorObj = {};
+
 app.get("/", function(req, res) {
   res.render("index");
 });
@@ -17,6 +19,15 @@ app.post("/register", function(req, res) {
   res.send(member)
 })
 
+app.post("/draw", function(req, res) {
+  let result = game.draw()
+  res.send(result)
+});
+
+app.post("/find", function(req, res) {
+  let result = game.find(req.body.name)
+  res.send(result)
+});
 
 
 

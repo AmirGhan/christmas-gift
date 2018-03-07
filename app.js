@@ -45,24 +45,24 @@ rl.on('line', function(line) {
 		}
 
   } else if (line.trim() === 'draw') {
-    try {
-      game.draw();
-      console.log("*** Draw has been done! ***");
-    }
-    catch (err){
-      console.log(err);
-    }
+      let result = game.draw();
+      if(result == undefined){
+        console.log("*** Draw has been done! ***");
+      } else {
+        console.log(result)
+      }
 
   } else if (line.startsWith('get')) {
     let name = line.slice('get '.length);
     if (name.length > 0) {
-      try {
-        let matched = game.find(name);
-        console.log(`'${name}' gives a gift to '${matched}'`);
-      }
-      catch(err){
-        console.log(err);
-      }
+        let result = game.find(name);
+        if(result != "*** There is NO member with such a name in the results list ***"){
+          console.log(`'${name}' gives a gift to '${result}'`);      
+        } else {
+          console.log(result);        
+        }
+
+
     } else {
 		 	console.log("You must enter a name after 'get' command");
 		}

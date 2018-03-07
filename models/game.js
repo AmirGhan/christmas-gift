@@ -22,15 +22,15 @@ module.exports = class Game {
 	draw() {
 		// Stops if only 1 person registered
 		if(this.members.length == 1){
-			throw("*** Due to conditions, you can NOT use this app for only 1 person ***");
+			return "*** Due to conditions, you can NOT use this app for only 1 person ***";
 		}
 		// Stops if only 1 couple registered
 		if(this.members.length == 2 && this.members[0].name == this.members[1].spouse){
-			throw("*** Due to conditions, you can NOT use this app for only 1 couple ***");
+			return "*** Due to conditions, you can NOT use this app for only 1 couple ***";
 		}
 		// Stops if only 1 couple and 1 person registered
 		if(this.members.length == 3 && (this.members[0].name == this.members[1].spouse || this.members[1].name == this.members[2].spouse || this.members[0].name == this.members[2].spouse)){
-			throw("*** Due to conditions, you can NOT use this app for only 1 couple and 1 single person ***");
+			return "*** Due to conditions, you can NOT use this app for only 1 couple and 1 single person ***";
 		}
 
 		let giftArr = this.members.slice(); // Create a copy of the members list
@@ -75,7 +75,7 @@ module.exports = class Game {
 		if (name in this.results) {
 			return this.results[name];
 		} else {
-			throw "*** There is NO member with such a name in the results list ***";
+			return "*** There is NO member with such a name in the results list ***";
 		}
 	}
 
