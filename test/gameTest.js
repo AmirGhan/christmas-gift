@@ -23,18 +23,21 @@ describe('Game', function () {
     describe('draw()', function () {
       it('should throw an error if there is only 1 person for draw', function () {
         game.addMember('Jack');
-        expect(game.draw.bind(game)).to.throw('*** Due to conditions, you can NOT use this app for only 1 person ***');
+        let result = game.draw()
+        expect(result).to.be.a('string').that.includes('*** Due to conditions, you can NOT use this app for only 1 person ***');
       });
 
       it('should throw an error if there is only 1 couple for draw', function () {
         game.addMember('Jack', 'Sarah');
-        expect(game.draw.bind(game)).to.throw('*** Due to conditions, you can NOT use this app for only 1 couple ***');
+        let result = game.draw()
+        expect(result).to.be.a('string').that.includes('*** Due to conditions, you can NOT use this app for only 1 couple ***');
       });
 
       it('should throw an error if there are only 1 couple and 1 single person for draw', function () {
         game.addMember('Jack', 'Sarah');
         game.addMember('John');
-        expect(game.draw.bind(game)).to.throw('*** Due to conditions, you can NOT use this app for only 1 couple and 1 single person ***');
+        let result = game.draw()
+        expect(result).to.be.a('string').that.includes('*** Due to conditions, you can NOT use this app for only 1 couple and 1 single person ***');
       });
 
     });
@@ -52,7 +55,8 @@ describe('Game', function () {
         game.addMember('Jack');
         game.addMember('John');
         game.draw();
-        expect(game.find.bind(game, 'Sarah')).to.throw('*** There is NO member with such a name in the results list ***');
+        let result = game.find('Sarah')
+        expect(result).to.be.a('string').that.includes('*** There is NO member with such a name in the results list ***');
       });
     });
 
