@@ -15,7 +15,6 @@
 
   <body>
     <div class="background">
-
       <div class="container-fluid">
         <div class="row">
           <h1 style="text-align: center;">Welcome to the Gift Exchange App</h1>
@@ -24,11 +23,15 @@
         <hr>
 
 
-
         <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <p>IMPORTANT: - Names must be unique     - Couples should register together     - Fields are case sensetive</p>
+          </div>
+        </div>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
             <form method="POST" action="/register" id="register">
               <div>
                 <label>Enter your name:</label>
@@ -39,21 +42,30 @@
               </div>
             </form>
           </div>
+
           <div class="col-md-2">
             <form method="POST" action="/draw" id="draw">
               <input class="btn btn-info btn-block" type="submit" value="Draw">
             </form>
           </div>
-          <form method="POST" action="/find" id="find">
-            <div>
-              <label>Enter your name to see who you're matched with:</label>
-              <input type="text" name="name" required>
-              <input class="btn btn-default" type="submit" value="Search">
-            </div>
-          </form>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-8">
+            <form method="POST" action="/find" id="find">
+              <div>
+                <label>Enter your name to see who you're matched with:</label>
+                <input type="text" name="name" required>
+                <input class="btn btn-default" type="submit" value="Search">
+              </div>
+            </form>
+          </div>
+
           <div class="col-md-2">
-            <form method="POST" action="/winners" id="winners">
-              <input class="btn btn-success btn-block" type="submit" value="Winners">
+            <form method="POST" action="/finalResults" id="finalResults">
+              <input class="btn btn-success btn-block" type="submit" value="Results">
             </form>
           </div>
           <div class="col-md-2">
@@ -82,6 +94,7 @@
             <section id="results"></section>
           </div>
         </div>
+
       </div>
     </div>
 

@@ -35,62 +35,86 @@ $( document ).ready(function() {
     return $memberContent;
     };
 
-    //==============================================================================
-    // DRAW
-    //==============================================================================
-    $("#draw").submit(function (event) {
-      event.preventDefault();
-      $.ajax({
-      url: '/draw',
-      method: 'POST',
-      success: function (message) {
-        console.log('message: ', message)
-        printMessage(message);
-      }
-      });
-
+  //==============================================================================
+  // DRAW
+  //==============================================================================
+  $("#draw").submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+    url: '/draw',
+    method: 'POST',
+    success: function (message) {
+      console.log('message: ', message)
+      printMessage(message);
+    }
     });
 
-    function printMessage(message) {
-      if(message != ''){
-        let $container = $("#message");
-        let section = $("<p>").text(message).css("color", "red");
-        $container.prepend(section);
-      } else {
-        let $container = $("#message");
-        let section = $("<p>").text("*** Draw has been done! ***").css("color", "green");
-        $container.prepend(section);
-      }
+  });
+
+  function printMessage(message) {
+    if(message != ''){
+      let $container = $("#message");
+      let section = $("<p>").text(message).css("color", "red");
+      $container.prepend(section);
+    } else {
+      let $container = $("#message");
+      let section = $("<p>").text("*** Draw has been done! ***").css("color", "green");
+      $container.prepend(section);
     }
-    //==============================================================================
-    // Find individual match
-    //==============================================================================
-    let givenName;
-    $("#find").submit(function (event) {
+  }
+  
+  //==============================================================================
+  // Find individual match
+  //==============================================================================
+  let givenName;
+  $("#find").submit(function (event) {
+    event.preventDefault();
+    givenName = $(this).serialize();
+    $.ajax({
+      url: '/find',
+      method: 'POST',
+      data: givenName,
+      success: function (result) {
+        printMember(result);
+      }
+    });
+
+  });
+
+  function printMember(result) {
+    if(result == "*** There is NO member with such a name in the results list ***"){
+      let $container = $("#giftExchange");
+      let section = $("<p>").text(result).css("color", "red");
+      $container.prepend(section);
+    } else {
+      let askedName = givenName.slice('name='.length)
+      let $container = $("#giftExchange");
+      let section = $("<p>").text(`'${askedName}' gives a gift to '${result}'`).css("color", "green");
+      $container.prepend(section);
+    }
+  }
+
+  //==============================================================================
+  // FINAL RESULTS
+  //==============================================================================
+    $("#finalResults").submit(function (event) {
       event.preventDefault();
-      givenName = $(this).serialize();
       $.ajax({
-        url: '/find',
+        url: '/finalResults',
         method: 'POST',
-        data: givenName,
-        success: function (result) {
-          printMember(result);
+        success: function (resultsObj) {
+          renderResults(resultsObj)
         }
       });
 
     });
 
-    function printMember(result) {
-      if(result == "*** There is NO member with such a name in the results list ***"){
-        let $container = $("#giftExchange");
-        let section = $("<p>").text(result).css("color", "red");
-        $container.prepend(section);
-      } else {
-        let askedName = givenName.slice('name='.length)
-        let $container = $("#giftExchange");
-        let section = $("<p>").text(`'${askedName}' gives a gift to '${result}'`).css("color", "green");
-        $container.prepend(section);
+    function renderResults(data) {
+      let $container = $("#results");
+      let hr = $("<hr>");
+      for (let i in data){
+        let section = $("<p>").text(` - '${i}' matched with '${data[i]}'`);
+        $container.prepend(hr, section);
       }
-    }
-
+    };
 });
